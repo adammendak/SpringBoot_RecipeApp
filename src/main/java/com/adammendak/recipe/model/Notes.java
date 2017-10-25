@@ -1,9 +1,26 @@
 package com.adammendak.recipe.model;
 
+import javax.persistence.*;
+
+@Entity
 public class Notes {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @OneToOne
     private Recipe recipe;
+    //this will make it CLOB and much more than 255 characters
+    @Lob
     private String recipeNotes;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Recipe getRecipe() {
         return recipe;
