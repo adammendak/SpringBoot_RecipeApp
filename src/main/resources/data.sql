@@ -7,3 +7,6 @@ INSERT INTO unit_of_measure (uom) VALUES ('kubek');
 INSERT INTO unit_of_measure (uom) VALUES ('łyżka stołowa');
 INSERT INTO unit_of_measure (uom) VALUES ('szczypta');
 INSERT INTO unit_of_measure (uom) VALUES ('gram');
+INSERT INTO recipe(description) VALUES('kotlet schabowy');
+INSERT INTO recipe(description) VALUES('pizza');
+INSERT INTO recipe(description) VALUES('sushi');

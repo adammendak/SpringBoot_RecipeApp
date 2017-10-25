@@ -1,36 +1,23 @@
 package com.adammendak.recipe.controller;
 
-import com.adammendak.recipe.model.Category;
-import com.adammendak.recipe.model.UnitOfMeasure;
-import com.adammendak.recipe.repository.CategoryRepository;
-import com.adammendak.recipe.repository.RecipeRepository;
-import com.adammendak.recipe.repository.UnitOfMeasureRepository;
+import com.adammendak.recipe.service.RecipeService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.Optional;
 
 @Controller
 public class IndexController {
 
-    private CategoryRepository categoryRepository;
-    private UnitOfMeasureRepository unitOfMeasureRepository;
-    private RecipeRepository recipeRepository;
+    public final RecipeService recipeService;
 
-    public IndexController(CategoryRepository categoryRepository, UnitOfMeasureRepository unitOfMeasureRepository, RecipeRepository recipeRepository) {
-        this.categoryRepository = categoryRepository;
-        this.unitOfMeasureRepository = unitOfMeasureRepository;
-        this.recipeRepository = recipeRepository;
+    public IndexController(RecipeService recipeService) {
+        this.recipeService = recipeService;
     }
 
     @RequestMapping({"/", "", "/index"})
-    public String getIndexPage() {
+    public String getIndexPage(Model model) {
 
-        Optional<Category> categoryOptional = categoryRepository.findByDescription("Fast Food");
-        Optional<UnitOfMeasure> unitOfMeasureOptional = unitOfMeasureRepository.findByUom("gram");
-
-        System.out.println("Cat id is :" + categoryOptional.get().getId());
-        System.out.println("Uom id is :" + unitOfMeasureOptional.get().getId());
+        model.addAttribute("recipes", recipeService.getRecipes());
 
         return "index";
     }
