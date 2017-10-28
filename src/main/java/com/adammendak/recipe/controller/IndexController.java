@@ -21,4 +21,12 @@ public class IndexController {
 
         return "index";
     }
+
+    @RequestMapping("/recipe")
+    public String getProduct(Model model) {
+        model.addAttribute("recipe", recipeService.findByDescription("pizza"));
+
+
+        return "recipe";
+    }
 }

@@ -2,23 +2,20 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <title>Title</title>
+    <title>Product</title>
 </head>
 <body>
-<h1>my recipes</h1>
 
+<h1>pojedynczy produkt</h1>
 <table>
     <tr>
-        <th>ID</th>
         <th>Description</th>
     </tr>
-    <tr th:each="recipe : ${recipes}">
-        <td th:text="${recipe.id}">123</td>
+    <tr th:each="recipe : ${recipe}">
         <td th:text="${recipe.description}">desc</td>
 
     </tr>
-
 </table>
-<a th:href="recipe">recipe</a>
+<a th:href="index">index</a>
 </body>
 </html>
