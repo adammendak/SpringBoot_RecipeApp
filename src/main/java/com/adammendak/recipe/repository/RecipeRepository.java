@@ -8,7 +8,7 @@ import java.util.Set;
 
 public interface RecipeRepository extends CrudRepository<Recipe, Long> {
 
-    Optional<Recipe> findByDescription (String description);
+    Recipe findByDescription (String description);
 
     Set<Recipe> findAll();
 }

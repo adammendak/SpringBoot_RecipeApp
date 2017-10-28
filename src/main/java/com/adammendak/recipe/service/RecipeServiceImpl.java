@@ -4,6 +4,7 @@ import com.adammendak.recipe.model.Recipe;
 import com.adammendak.recipe.repository.RecipeRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -18,5 +19,10 @@ public class RecipeServiceImpl implements RecipeService {
     @Override
     public Set<Recipe> getRecipes() {
         return recipeRepository.findAll();
+    }
+
+    @Override
+    public Recipe findByDescription(String description) {
+        return recipeRepository.findByDescription(description);
     }
 }
