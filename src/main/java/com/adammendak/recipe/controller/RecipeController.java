@@ -6,20 +6,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class IndexController {
+public class RecipeController {
 
     public final RecipeService recipeService;
 
-    public IndexController(RecipeService recipeService) {
+    public RecipeController(RecipeService recipeService) {
         this.recipeService = recipeService;
     }
 
-    @RequestMapping({"/", "", "/index"})
-    public String getIndexPage(Model model) {
+    @RequestMapping("/recipe")
+    public String getProduct(Model model) {
+        model.addAttribute("recipe", recipeService.findByDescription("pizza"));
 
-        model.addAttribute("recipes", recipeService.getRecipes());
 
-        return "index";
+        return "recipe";
     }
-
 }
