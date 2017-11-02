@@ -10,7 +10,7 @@ public class RecipeController {
 
     public final RecipeService recipeService;
 
-    public RecipeController(RecipeService recipeService) {g
+    public RecipeController(RecipeService recipeService) {
         this.recipeService = recipeService;
     }
 
