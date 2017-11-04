@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class RecipeController {
@@ -25,7 +26,11 @@ public class RecipeController {
         model.addAttribute("recipe", recipeService.findById(new Long(id)));
 
         return "recipe/show";
+    }
 
+    @RequestMapping(value = "/recipe/recipeForm", method = RequestMethod.GET)
+    public String getRecipeForm(){
+        return  "recipe/recipeForm";
     }
 
 }
