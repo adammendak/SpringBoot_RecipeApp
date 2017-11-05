@@ -1,9 +1,11 @@
 package com.adammendak.recipe.controller;
+import com.adammendak.recipe.model.Recipe;
 import com.adammendak.recipe.service.RecipeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,9 +30,14 @@ public class RecipeController {
         return "recipe/show";
     }
 
-    @RequestMapping(value = "/recipe/recipeForm", method = RequestMethod.GET)
+    @RequestMapping(value = "/recipe/new", method = RequestMethod.GET)
     public String getRecipeForm(){
         return  "recipe/recipeForm";
     }
 
+    @RequestMapping(value = "/recipe/new", method = RequestMethod.POST)
+    public String saveOrUpdate(@ModelAttribute Recipe recipe) {
+        Recipe savedRecipe = recipeService.saveRecipe(recipe);
+        return "redirect:/recipe/show/" + savedRecipe.getId();
+    }
 }

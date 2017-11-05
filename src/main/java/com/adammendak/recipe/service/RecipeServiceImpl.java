@@ -43,4 +43,12 @@ public class RecipeServiceImpl implements RecipeService {
     public Recipe findByDescription(String description) {
         return recipeRepository.findByDescription(description);
     }
+
+    @Override
+    public Recipe saveRecipe(Recipe recipe) {
+
+        Recipe savedRecipe = recipeRepository.saveRecipe(recipe);
+        logger.info("Saved recipe id : " + savedRecipe.getId());
+        return savedRecipe;
+    }
 }

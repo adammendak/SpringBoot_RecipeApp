@@ -9,6 +9,7 @@ import java.util.Set;
 public interface UnitOfMeasureRepository extends CrudRepository<UnitOfMeasure, Long> {
 
     UnitOfMeasure findByUom (String uom);
+
     Set<UnitOfMeasure> findAll();
 
 }
