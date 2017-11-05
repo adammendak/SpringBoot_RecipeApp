@@ -13,4 +13,8 @@ public interface RecipeRepository extends CrudRepository<Recipe, Long> {
     Set<Recipe> findAll();
 
     Optional<Recipe> findById(Long l);
+
+    Recipe saveRecipe(Recipe recipe);
+
+
 }
