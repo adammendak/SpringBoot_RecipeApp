@@ -31,7 +31,8 @@ public class RecipeController {
     }
 
     @RequestMapping(value = "/recipe/new", method = RequestMethod.GET)
-    public String getRecipeForm(){
+    public String getRecipeForm(Model model){
+        model.addAttribute("recipe", new Recipe());
         return  "recipe/recipeForm";
     }
 

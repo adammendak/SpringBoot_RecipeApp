@@ -5,7 +5,26 @@
         <title>New Recipe</title>
     </head>
     <body>
-        <h1 class="text-center">bootstrapcenter</h1>
+    <!--/*@thymesVar id="recipe" type="com.adammendak.recipe.model.Recipe"*/-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="card" style="width: 80%; margin-left: 10%; margin-top: 25px; margin-bottom: 10px;">
+                    <div class="card-body">
+                        <div class="card-title text-center">Add new Recipe</div>
+                        <div class="card-text">
+                             <form th:object="${recipe}" th:action="@{/recipe/new}" method="POST">
+                                 <div class="form-group">
+                                     <input type="hidden" th:field="*{id}"/>
+                                     <label for="recipeDescription">Recipe Description</label>
+                                     <input type="text" class="form-control" id="recipeDescription" placeholder="Write Recipe Description" th:field="*{description}"/>
+                                     <button type="submit" class="btn btn-primary">Submit</button>
+                                 </div>
+                             </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <a href="#" th:href="@{/index}"><button type="button" class="btn btn-info btn-lg btn-block"> Get back to index</button></a>
     </body>
 </html>
