@@ -13,9 +13,6 @@ public class Recipe {
     private Integer prepTime;
     private Integer cookTime;
     private Integer servings;
-    private String source;
-    private String url;
-    private String directions;
 
     @Enumerated(value = EnumType.STRING)
     private Difficulty difficulty;
@@ -89,30 +86,6 @@ public class Recipe {
 
     public void setServings(Integer servings) {
         this.servings = servings;
-    }
-
-    public String getSource() {
-        return source;
-    }
-
-    public void setSource(String source) {
-        this.source = source;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getDirections() {
-        return directions;
-    }
-
-    public void setDirections(String directions) {
-        this.directions = directions;
     }
 
     public Byte[] getImage() {

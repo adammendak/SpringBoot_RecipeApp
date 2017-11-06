@@ -47,7 +47,7 @@ public class RecipeServiceImpl implements RecipeService {
     @Override
     public Recipe saveRecipe(Recipe recipe) {
 
-        Recipe savedRecipe = recipeRepository.saveRecipe(recipe);
+        Recipe savedRecipe = recipeRepository.save(recipe);
         logger.info("Saved recipe id : " + savedRecipe.getId());
         return savedRecipe;
     }

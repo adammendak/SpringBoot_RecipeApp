@@ -5,7 +5,75 @@
         <title>New Recipe</title>
     </head>
     <body>
-        <h1 class="text-center">bootstrapcenter</h1>
+    <!--/*@thymesVar id="recipe" type="com.adammendak.recipe.model.Recipe"*/-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="card" style="width: 80%; margin-left: 10%; margin-top: 25px; margin-bottom: 10px;">
+                    <div class="card-body">
+                        <div class="card-title text-center"><h2>Add new Recipe</h2></div>
+                        <div class="card-text">
+                             <form th:object="${recipe}" th:action="@{/recipe/new}" method="POST">
+                                 <!--<div class="form-group">-->
+                                     <input type="hidden" th:field="*{id}"/>
+                                     <div class="row">
+                                        <div class="col-md-6 form-group>">
+                                            <label for="recipeDescription">Recipe Description</label>
+                                            <input type="text" class="form-control" id="recipeDescription" placeholder="Write Recipe Description" th:field="*{description}"/>
+                                        </div>
+                                        <div class="col-md-3 form-group" style="padding-top: 30px;">
+                                            <label for="difficulty">Difficulty</label>
+                                            <select class="form-group" id="difficulty">
+                                                <option>Easy</option>
+                                                <option>Medium</option>
+                                                <option>Hard</option>
+                                            </select>
+                                            <!--<input type="text" class="form-control" id="difficulty" placeholder="Choose Difficulty " th:field="*{difficulty}"/>-->
+                                        </div>
+                                        <div class="col-md-3 form-grop" style="padding-top: 30px;">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="checkbox" value=""/>
+                                                    Cat 1
+                                                </label>
+                                                <label>
+                                                    <input type="checkbox" value=""/>
+                                                    Cat 2
+                                                </label>
+                                            </div>
+                                            <div class="radio" th:remove="all">
+                                                <label>
+                                                    <input type="checkbox" value=""/>
+                                                    Cat 2
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4 form-group">
+                                            <label for="prepTime">Preparation Time</label>
+                                            <input type="text" class="form-control" id="prepTime" placeholder="Write Preparation Time" th:field="*{prepTime}"/>
+                                        </div>
+                                        <div class="col-md-4 form-group">
+                                            <label for="cookTime">Cook Time</label>
+                                            <input type="text" class="form-control" id="cookTime" placeholder="Write Cooking Time" th:field="*{cookTime}"/>
+                                        </div>
+                                        <div class="col-md-4 form-group">
+                                            <label for="servings">Servings</label>
+                                            <input type="text" class="form-control" id="servings" placeholder="Write Servings " th:field="*{servings}"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-5"></div>
+                                        <div class="col-md-2">
+                                            <button type="submit" class="btn btn-lg btn-primary">Submit</button>
+                                        </div>
+                                    </div>
+                             </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <a href="#" th:href="@{/index}"><button type="button" class="btn btn-info btn-lg btn-block"> Get back to index</button></a>
     </body>
 </html>
