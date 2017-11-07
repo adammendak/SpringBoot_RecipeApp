@@ -16,5 +16,7 @@ public interface RecipeService {
 
     Recipe saveRecipe(Recipe recipe);
 
+    void detedeRecipe(Long idTodelete);
+
 
 }
