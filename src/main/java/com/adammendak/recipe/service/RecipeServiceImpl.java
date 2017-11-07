@@ -51,4 +51,9 @@ public class RecipeServiceImpl implements RecipeService {
         logger.info("Saved recipe id : " + savedRecipe.getId());
         return savedRecipe;
     }
+
+    @Override
+    public void detedeRecipe(Long idTodelete) {
+        recipeRepository.delete(idTodelete);
+    }
 }
