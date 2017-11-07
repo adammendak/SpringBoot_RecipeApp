@@ -1,4 +1,5 @@
 package com.adammendak.recipe.controller;
+import com.adammendak.recipe.model.Notes;
 import com.adammendak.recipe.model.Recipe;
 import com.adammendak.recipe.service.RecipeService;
 import org.slf4j.Logger;
@@ -21,7 +22,7 @@ public class RecipeController {
         this.recipeService = recipeService;
     }
 
-    @RequestMapping("/recipe/{id}/show")
+    @RequestMapping(value = "/recipe/{id}/show", method = RequestMethod.GET)
     public String getById(@PathVariable String id, Model model) {
 
         logger.info("going into recipe no " + id);
@@ -30,7 +31,7 @@ public class RecipeController {
         return "recipe/show";
     }
 
-    @RequestMapping("/recipe/{id}/update")
+    @RequestMapping(value = "/recipe/{id}/update", method = RequestMethod.GET)
     public String updateRecipe(@PathVariable String id, Model model) {
 
         logger.info("updating recipe no:" + id);
@@ -48,13 +49,14 @@ public class RecipeController {
     @RequestMapping(value = "/recipe/new", method = RequestMethod.POST)
     public String saveOrUpdate(@ModelAttribute Recipe recipe) {
         Recipe savedRecipe = recipeService.saveRecipe(recipe);
+
         return "redirect:/recipe/" + savedRecipe.getId() + "/show";
     }
 
-    @RequestMapping("/recipe/{id}/delete")
+    @RequestMapping(value = "/recipe/{id}/delete", method = RequestMethod.GET)
     public String deleteRecipe(@PathVariable String id) {
         logger.info("deleting Recipe wih id:" + id);
         recipeService.detedeRecipe(new Long(id));
-        return "redirect:/index";
+        return "redirect:/";
     }
 }

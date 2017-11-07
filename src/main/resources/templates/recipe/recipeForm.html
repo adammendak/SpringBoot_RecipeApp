@@ -61,6 +61,24 @@
                                             <label for="servings">Servings</label>
                                             <input type="text" class="form-control" id="servings" placeholder="Write Servings " th:field="*{servings}"/>
                                         </div>
+                                        <div class="card-title text-center col-md-12"><h2>Notes how to prepare a recipe</h2></div>
+                                        <div class="col-md-12 form-group">
+                                            <label for="notes">Notes</label>
+                                            <input type="text" class="form-control" id="notes" placeholder="add notes how to prepare a recipe" th:field="*{notes.recipeNotes}"/>
+                                        </div>
+                                        <div class="card-title text-center col-md-11"><h2>Ingredients</h2></div>
+                                        <div class="col-md-1">
+                                            <a class="btn btn-default" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredients'}" role="button">Edit or Add</a>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <ul th:if="${not #lists.isEmpty(recipe.ingredients)}">
+                                                <li th:each="ingredient : ${recipe.ingredients}"
+                                                    th:text="${(ingredient.getAmount() +
+                                        ' ' + ingredient.unitOfMeasure.getUom() +
+                                        ' - ' + ingredient.getDescription())}">
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-5"></div>
