@@ -1,5 +1,4 @@
 package com.adammendak.recipe.controller;
-import com.adammendak.recipe.model.Notes;
 import com.adammendak.recipe.model.Recipe;
 import com.adammendak.recipe.service.RecipeService;
 import org.slf4j.Logger;
