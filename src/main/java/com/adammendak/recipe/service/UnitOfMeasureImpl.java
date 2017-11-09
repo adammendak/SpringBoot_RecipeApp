@@ -4,9 +4,11 @@ import com.adammendak.recipe.model.UnitOfMeasure;
 import com.adammendak.recipe.repository.UnitOfMeasureRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class UnitOfMeasureImpl implements UnitOfMeasureService {
 
     private final UnitOfMeasureRepository unitOfMeasureRepository;
