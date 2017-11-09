@@ -1,24 +1,48 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="en">
 <head>
     <div th:replace="fragments/header :: head"></div>
     <title>add or update ingredient</title>
 </head>
 <body>
 <!--/*@thymesVar id="recipe" type="com.adammendak.recipe.model.Recipe"*/-->
-<!--/*@thymesVar id="ingredients" type="java.util.Set<com.adammendak.recipe.model.Ingredient>"*/-->
-<div class="container-fluid">
-    <div class="row">
-        <div class="card" style="width: 80%; margin-left: 10%; margin-top: 25px; margin-bottom: 10px;">
-            <div class="card-body">
-                <div class="card-title text-center"><h2>Add or Update ingredient</h2></div>
-                <div class="card-text">
+<!--/*@thymesVar id="ingredient" type="com.adammendak.recipe.model.Ingredient"*/-->
+<!--/*@thymesVar id="uom" type="java.util.Set<com.adammendak.recipe.model.UnitOfMeasure>"*/-->
 
+    <div class="container-fluid">
+        <div class="row">
+            <div class="card" style="width: 80%; margin-left: 10%; margin-top: 25px; margin-bottom: 10px;">
+                <div class="card-body">
+                    <div class="card-title text-center"><h2>Add or Update ingredient</h2></div>
+                    <div class="card-text">
+                        <form  th:object="${ingredient}" th:action="@{'/recipe/' + ${recipe.id} + '/ingredient'}" method="POST">
+                            <input type="hidden" th:field="*{id}"/>
+                            <div class="row">
+                                <div class="col-md-3 form-group">
+                                    <label>Description:</label>
+                                    <input type="text" class="form-control" th:field="*{description}"/>
+                                </div>
 
+                                <div class="col-md-3 form-group">
+                                    <label>Amount:</label>
+                                    <input type="number" class="form-control" th:field="*{amount}"/>
+                                </div>
+
+                                <div class="col-md-3 form-group">
+                                    <label>UOM:</label>
+                                    <select th:field="*{unitOfMeasure}" class="form-control">
+                                        <option th:each="uomEach : ${uom}"
+                                                th:value="${uomEach.id}"
+                                                th:text="${uomEach.uom}">Each</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </body>
 </html>

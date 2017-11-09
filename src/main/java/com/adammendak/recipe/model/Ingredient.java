@@ -54,6 +54,17 @@ public class Ingredient {
         return unitOfMeasure;
     }
 
+    @Override
+    public String toString() {
+        return "Ingredient{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", amount=" + amount +
+                ", recipe=" + recipe +
+                ", unitOfMeasure=" + unitOfMeasure +
+                '}';
+    }
+
     public void setUnitOfMeasure(UnitOfMeasure unitOfMeasure) {
         this.unitOfMeasure = unitOfMeasure;
     }
