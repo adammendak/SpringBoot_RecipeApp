@@ -7,29 +7,40 @@
 <body>
 <!--/*@thymesVar id="recipe" type="com.adammendak.recipe.model.Recipe"*/-->
 <!--/*@thymesVar id="ingredient" type="com.adammendak.recipe.model.Ingredient"*/-->
-<div class="container-fluid">
-    <div class="row">
-        <div class="card" style="width: 80%; margin-left: 10%; margin-top: 25px; margin-bottom: 10px;">
-            <div class="card-body">
-                <div class="card-title text-center"><h2>Show ingredient</h2></div>
-                <div class="card-text">
-                    <div class="table-responsive">
-                        <table class="table table-hover ">
-                            <thead class="thead-inverse">
-                            <tr>
-                                <th>ID</th>
-                                <th>Description</th>
-                            </tr>
-                            </thead>
-                            <tr>
-                                <td th:text="${ingredient.id}"></td>
-                                <td th:text="${ingredient.amount} + ' ' + ${ingredient.unitOfMeasure.getUom()} + ' ' + ${ingredient.description}"></td>
-                            </tr>
-                        </table>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="card" style="width: 80%; margin-left: 10%; margin-top: 25px; margin-bottom: 10px;">
+                <div class="card-body">
+                    <div class="card-title text-center"><h2>Show ingredient</h2></div>
+                    <div class="card-text">
+                        <div class="row">
+                            <div class="table-responsive">
+                                <table class="table table-hover ">
+                                    <thead class="thead-inverse">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Description</th>
+                                    </tr>
+                                    </thead>
+                                    <tr>
+                                        <td th:text="${ingredient.id}"></td>
+                                        <td th:text="${ingredient.amount} + ' ' + ${ingredient.description}"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5"></div>
+                            <div class="col-md-3 col-centered">
+                                <a th:href="@{'/recipe/' + ${recipe.id} + '/ingredients'}"><button type="button" class="btn btn-warning"> get back to ingredients list</button></a>
+                                <a th:href="@{'/recipe/' + ${recipe.id} + '/show'}"><button type="button" class="btn btn-info"> get back to recipe</button></a>
+                                <a th:href="@{'/index'}"><button type="button" class="btn btn-warning"> get back to index</button></a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+            </div>
     </div>
-</div>
 </body>
 </html>

@@ -48,6 +48,7 @@ public class IngredientServiceImpl implements IngredientService {
     @Override
     public Ingredient saveIngredient(Ingredient ingredient, Recipe recipeId) {
 
+
         Optional<Recipe> recipeOptional = recipeRepository.findById(recipeId.getId());
 
         if(!recipeOptional.isPresent()) {
@@ -56,11 +57,29 @@ public class IngredientServiceImpl implements IngredientService {
 
         Recipe recipe = recipeOptional.get();
 
+        ingredient.setRecipe(recipe);
+        ingredient.setUnitOfMeasure(ingredient.getUnitOfMeasure());
+
         recipe.addIngredient(ingredient);
+        recipeRepository.save(recipe);
 
-        logger.info("added ingredient id " + ingredient.getId() + "to recipe id " + recipe.getId());
+        Optional<Ingredient> savedIngredient = recipe.getIngredients().stream()
+                .filter(i -> i.getRecipe().equals(ingredient.getRecipe()))
+                .filter(i -> i.getDescription().equals(ingredient.getDescription()))
+                .findFirst();
 
-        return ingredient;
+        if(!savedIngredient.isPresent()) {
+            logger.error("no present ingredient");
+        }
+
+
+        //debuggind
+        logger.info(ingredient.toString());
+        logger.info("added ingredient id " + savedIngredient.get().getId() + "to recipe id " + recipe.getId());
+        logger.info(savedIngredient.toString());
+        logger.error(savedIngredient.toString());
+
+        return savedIngredient.get();
     }
 
     @Override
