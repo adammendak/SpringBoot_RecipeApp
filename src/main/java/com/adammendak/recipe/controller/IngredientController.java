@@ -34,23 +34,23 @@ public class IngredientController {
         logger.info("getting lists of ingredients for recipe no: " + id);
         model.addAttribute("recipe", recipeService.findById(new Long(id)));
 
-        return "recipe/ingredient/list";
+        return "recipe/ingredients/list";
     }
 
     @RequestMapping(value = "recipe/{recipeId}/ingredient/show/{id}", method = RequestMethod.GET)
     public String showRecipeIngredient (@PathVariable String recipeId, @PathVariable String id, Model model) {
         model.addAttribute("ingredient", ingredientService.findByRecipeIdAndIngredientId(Long.valueOf(recipeId), Long.valueOf(id)));
 
-        return "recipe/ingredient/show";
+        return "recipe/ingredients/show";
     }
 
     @RequestMapping(value = "recipe/{recipeId}/ingredient/new", method = RequestMethod.GET)
     public String newIngredient(@PathVariable String recipeId, Model model) {
 
-        model.addAttribute("recipe", recipeService.findById(new Long(recipeId));
+        model.addAttribute("recipe", recipeService.findById(new Long(recipeId)));
         model.addAttribute("uom", unitOfMeasureService.getAll());
 
-        return "recipe/ingredient/ingredientForm";
+        return "recipe/ingredients/ingredientForm";
     }
 
     @RequestMapping(value = "recipe/{recipeId}/ingredient/{id}/update", method = RequestMethod.GET)
@@ -60,7 +60,7 @@ public class IngredientController {
         model.addAttribute("recipe", recipeService.findById(new Long(recipeId)));
         model.addAttribute("uom", unitOfMeasureService.getAll());
 
-        return "recipe/ingredient/ingredientForm";
+        return "recipe/ingredients/ingredientForm";
     }
 
     @RequestMapping(value = "recipe/{recipeId}/ingredient", method = RequestMethod.POST)
@@ -68,9 +68,9 @@ public class IngredientController {
 
         Recipe recipe = recipeService.findById(new Long(recipeId));
 
-        Ingredient ingredientToSave = ingredientService.saveIngredient(ingredient, recipe));
+        Ingredient ingredientToSave = ingredientService.saveIngredient(ingredient, recipe);
 
-        return "redirect:/recipe/" + recipeId + "/ingredient/" + ingredient.getId() + "/show";
+        return "redirect:/recipe/" + recipeId + "/ingredients/" + ingredient.getId() + "/show";
     }
 
     @RequestMapping(value = "recipe/{recipeId}/ingredient/{id}/delete", method = RequestMethod.DELETE)

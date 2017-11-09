@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <div th:replace="fragments/header :: head"></div>
+    <title>add or update ingredient</title>
 </head>
 <body>
+<!--/*@thymesVar id="recipe" type="com.adammendak.recipe.model.Recipe"*/-->
+<!--/*@thymesVar id="ingredients" type="java.util.Set<com.adammendak.recipe.model.Ingredient>"*/-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="card" style="width: 80%; margin-left: 10%; margin-top: 25px; margin-bottom: 10px;">
+            <div class="card-body">
+                <div class="card-title text-center"><h2>Add or Update ingredient</h2></div>
+                <div class="card-text">
 
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

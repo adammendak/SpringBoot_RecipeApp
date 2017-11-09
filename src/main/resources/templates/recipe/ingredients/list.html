@@ -1,10 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Ingredient List</title>
+    <div th:replace="fragments/header :: head"></div>
+    <title>Ingredients</title>
 </head>
 <body>
+<!--/*@thymesVar id="recipe" type="com.adammendak.recipe.model.Recipe"*/-->
+<!--/*@thymesVar id="ingredients" type="java.util.Set<com.adammendak.recipe.model.Ingredient>"*/-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="card" style="width: 80%; margin-left: 10%; margin-top: 25px; margin-bottom: 10px;">
+            <div class="card-body">
+                <div class="card-title text-center"><h2>List of All Ingredients</h2></div>
+                <div class="card-text">
+                    <table class="table table-hover ">
+                        <thead class="thead-inverse">
+                        <tr>
+                            <th>ID</th>
+                            <th>Description</th>
+                            <th>View</th>
+                            <th>Update</th>
+                            <th>Delete</th>
+                        </tr>
+                        </thead>
+                        <tr th:each="ingredient : ${recipe.ingredients}">
+                            <td th:text="${ingredient.id}"></td>
+                            <td th:text="${ingredient.amount} + ' ' + ${ingredient.unitOfMeasure.getUom()} + ' ' + ${ingredient.description}">Tasty Goodnees 3</td>
+                            <td><a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/' + ${ingredient.id} + '/show'}">View</a></td>
+                            <td><a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/' + ${ingredient.id} + '/update'}">Update</a></td>
+                            <td><a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/' + ${ingredient.id} + '/delete'}">Delete</a></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+        <a th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/new'}"><button type="button" class="btn btn-success"> add recipe</button></a>
+        <a th:href="@{'/recipe/' + ${recipe.id} + '/show'}"><button type="button" class="btn btn-info"> get back to recipe</button></a>
+        <a th:href="@{'/index'}"><button type="button" class="btn btn-warning"> get back to index</button></a>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
