@@ -1,14 +1,14 @@
 package com.adammendak.recipe.controller;
+import com.adammendak.recipe.exceptions.NotFoundException;
 import com.adammendak.recipe.model.Recipe;
 import com.adammendak.recipe.service.RecipeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class RecipeController {
@@ -57,5 +57,16 @@ public class RecipeController {
         logger.info("deleting Recipe wih id:" + id);
         recipeService.detedeRecipe(new Long(id));
         return "redirect:/";
+    }
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(NotFoundException.class)
+    public ModelAndView handleNotFound() {
+        logger.error("recipe not found ");
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("error404");
+
+        return modelAndView;
     }
 }
