@@ -1,5 +1,6 @@
 package com.adammendak.recipe.service;
 
+import com.adammendak.recipe.exceptions.NotFoundException;
 import com.adammendak.recipe.model.Recipe;
 import com.adammendak.recipe.repository.RecipeRepository;
 import org.slf4j.Logger;
@@ -34,7 +35,8 @@ public class RecipeServiceImpl implements RecipeService {
         Optional<Recipe> recipe = recipeRepository.findById(l);
 
         if(!recipe.isPresent()) {
-            throw new RuntimeException("recipe not found");
+//            throw new NotFoundException("recipe not found for id value : " + l.toString());
+            throw new RuntimeException("recipe not found for id value : " + l.toString());
         }
         return recipe.get();
     }

@@ -1,5 +1,6 @@
 package com.adammendak.recipe.service;
 
+import com.adammendak.recipe.exceptions.NotFoundException;
 import com.adammendak.recipe.model.Recipe;
 
 import javax.swing.text.html.Option;
