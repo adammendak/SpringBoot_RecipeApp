@@ -7,8 +7,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.validation.Valid;
 
 @Controller
 public class RecipeController {
@@ -46,7 +49,14 @@ public class RecipeController {
     }
 
     @RequestMapping(value = "/recipe/new", method = RequestMethod.POST)
-    public String saveOrUpdate(@ModelAttribute Recipe recipe) {
+    public String saveOrUpdate(@Valid @ModelAttribute ("recipe") Recipe recipe, BindingResult bindingResult) {
+
+        if(bindingResult.hasErrors()) {
+            bindingResult.getAllErrors().forEach(objectError -> {
+                logger.debug(objectError.toString());
+            });
+        }
+
         Recipe savedRecipe = recipeService.saveRecipe(recipe);
 
         return "redirect:/recipe/" + savedRecipe.getId() + "/show";
@@ -59,14 +69,4 @@ public class RecipeController {
         return "redirect:/";
     }
 
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    @ExceptionHandler(NotFoundException.class)
-    public ModelAndView handleNotFound() {
-        logger.error("recipe not found ");
-
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("error404");
-
-        return modelAndView;
-    }
 }
