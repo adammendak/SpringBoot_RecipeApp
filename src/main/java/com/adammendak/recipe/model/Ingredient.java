@@ -3,6 +3,8 @@ package com.adammendak.recipe.model;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
@@ -15,7 +17,8 @@ public class Ingredient {
     @NotBlank
     @Size(min = 2, max = 999)
     private String description;
-    @Size(min = 1, max = 999)
+    @Min(1)
+    @Max(999)
     private BigDecimal amount;
 
     @ManyToOne

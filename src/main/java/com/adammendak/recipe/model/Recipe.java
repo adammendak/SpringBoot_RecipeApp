@@ -3,6 +3,8 @@ package com.adammendak.recipe.model;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 import java.util.Set;
 
@@ -13,13 +15,16 @@ public class Recipe {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotBlank
-    @Size(min = 2, max = 999)
+    @Size(min = 2, max = 255)
     private String description;
-    @Size(min = 1, max = 999)
+    @Min(1)
+    @Max(999)
     private Integer prepTime;
-    @Size(min = 1, max = 999)
+    @Min(1)
+    @Max(999)
     private Integer cookTime;
-    @Size(min = 1, max = 999)
+    @Min(1)
+    @Max(999)
     private Integer servings;
 
     @Enumerated(value = EnumType.STRING)
