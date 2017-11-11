@@ -3,6 +3,7 @@ package com.adammendak.recipe.model;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 
 @Entity
 public class Notes {
