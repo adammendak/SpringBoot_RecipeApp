@@ -13,7 +13,6 @@
                         <div class="card-title text-center"><h2>Add new Recipe</h2></div>
                         <div class="card-text">
                              <form th:object="${recipe}" th:action="@{/recipe/new}" method="POST">
-                                 <!--<div class="form-group">-->
                                      <input type="hidden" th:field="*{id}"/>
                                      <div class="row">
                                         <div class="col-md-6 form-group>">
