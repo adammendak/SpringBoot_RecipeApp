@@ -39,6 +39,7 @@ public class ExceptionHandlerController {
         ModelAndView modelAndView = new ModelAndView();
 
         modelAndView.setViewName("error404");
+
         modelAndView.addObject("exception", exception);
 
         return modelAndView;

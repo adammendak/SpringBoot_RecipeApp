@@ -6,6 +6,7 @@
     </head>
     <body>
     <!--/*@thymesVar id="recipe" type="com.adammendak.recipe.model.Recipe"*/-->
+    <!--/*@thymesVar id="difficulty" type="com.adammendak.recipe.model.Difficulty"*/-->
         <div class="container-fluid">
             <div class="row">
                 <div class="card" style="width: 80%; margin-left: 10%; margin-top: 25px; margin-bottom: 10px;">
@@ -22,10 +23,11 @@
                                         </div>
                                         <div class="col-md-3 form-group" style="padding-top: 30px;">
                                             <label for="difficulty">Difficulty</label>
-                                            <select class="form-group" id="difficulty">
-                                                <option>Easy</option>
-                                                <option>Medium</option>
-                                                <option>Hard</option>
+                                            <select class="form-control" id="difficulty" th:field="*{difficulty}">
+                                                <option th:each="difficultyValue : ${T(com.adammendak.recipe.model.Difficulty).values()}"
+                                                        th:value="${difficultyValue.name()}"
+                                                        th:text="${difficultyValue.name()}"
+                                                >val</option>
                                             </select>
                                             <!--<input type="text" class="form-control" id="difficulty" placeholder="Choose Difficulty " th:field="*{difficulty}"/>-->
                                         </div>
