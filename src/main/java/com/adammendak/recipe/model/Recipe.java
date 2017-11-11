@@ -1,6 +1,9 @@
 package com.adammendak.recipe.model;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Entity
@@ -9,9 +12,14 @@ public class Recipe {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank
+    @Size(min = 2, max = 999)
     private String description;
+    @Size(min = 1, max = 999)
     private Integer prepTime;
+    @Size(min = 1, max = 999)
     private Integer cookTime;
+    @Size(min = 1, max = 999)
     private Integer servings;
 
     @Enumerated(value = EnumType.STRING)

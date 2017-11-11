@@ -1,5 +1,7 @@
 package com.adammendak.recipe.model;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
 
 @Entity
@@ -12,6 +14,7 @@ public class Notes {
     private Recipe recipe;
     //this will make it CLOB and much more than 255 characters
     @Lob
+    @NotBlank
     private String recipeNotes;
 
     public Long getId() {
