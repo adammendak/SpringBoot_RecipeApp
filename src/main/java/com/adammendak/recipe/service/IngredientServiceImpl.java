@@ -101,7 +101,10 @@ public class IngredientServiceImpl implements IngredientService {
             logger.error("ingredient not found with id :" +ingredientId);
         }
 
+        ingredient.get().setRecipe(null);
+
         recipe.getIngredients().remove(ingredient.get());
+        recipeRepository.save(recipe);
 
     }
 }

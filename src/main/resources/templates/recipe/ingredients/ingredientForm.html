@@ -30,7 +30,7 @@
 
                                 <div class="col-md-3 form-group">
                                     <label>UOM:</label>
-                                    <select th:field="*{unitOfMeasure}" class="form-control">
+                                    <select class="form-control" name="unitOfMeasure">
                                         <option th:each="uomEach : ${uom}"
                                                 th:value="${uomEach.id}"
                                                 th:text="${uomEach.uom}">Each</option>
