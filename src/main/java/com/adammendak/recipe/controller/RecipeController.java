@@ -59,14 +59,5 @@ public class RecipeController {
         return "redirect:/";
     }
 
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    @ExceptionHandler(NotFoundException.class)
-    public ModelAndView handleNotFound() {
-        logger.error("recipe not found ");
 
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("error404");
-
-        return modelAndView;
-    }
 }
