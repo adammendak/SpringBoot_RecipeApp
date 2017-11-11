@@ -1,6 +1,9 @@
 package com.adammendak.recipe.model;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
 @Entity
@@ -9,7 +12,10 @@ public class Ingredient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank
+    @Size(min = 2, max = 999)
     private String description;
+    @Size(min = 1, max = 999)
     private BigDecimal amount;
 
     @ManyToOne
