@@ -54,7 +54,10 @@ public class RecipeController {
         if(bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(objectError -> {
                 logger.debug(objectError.toString());
+                logger.info(objectError.toString());
             });
+
+            return  "recipe/recipeForm";
         }
 
         Recipe savedRecipe = recipeService.saveRecipe(recipe);
