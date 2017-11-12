@@ -12,16 +12,51 @@
             <h1 class="text-center">recipe</h1>
                 <table class="table table-hover text-center">
                     <tr>
-                        <th>Description</th>
-                    </tr>
-                    <tr th:each="recipe : ${recipe}">
-                        <td th:text="${recipe.description}">desc</td>
+                        <th th:text="${recipe.description}">>Description</th>
                     </tr>
                     <tr>
                         <th>Category</th>
                     </tr>
                     <tr>
                         <td th:each="category : ${recipe.categories}" th:text="${category.getDescription()}"></td>
+                    </tr>
+                    <tr>
+                        <th>Difficulty</th>
+                    </tr>
+                    <tr>
+                        <td th:text="${recipe.difficulty}"></td>
+                    </tr>
+                    <tr>
+                        <th>Preparation Time</th>
+                    </tr>
+                    <tr>
+                        <td th:text="${recipe.prepTime}"></td>
+                    </tr>
+                    <tr>
+                        <th>Cook time</th>
+                    </tr>
+                    <tr>
+                        <td th:text="${recipe.cookTime}"></td>
+                    </tr>
+                    <tr>
+                        <th>Servings</th>
+                    </tr>
+                    <tr>
+                        <td th:text="${recipe.servings}"></td>
+                    </tr>
+                    <tr>
+                        <th>Notes</th>
+                    </tr>
+                    <tr th:if="${recipe.notes} != null">
+                        <td th:text="${recipe.notes.getRecipeNotes()}"></td>
+                    </tr>
+                    <tr>
+                        <th>Ingredients</th>
+                    </tr>
+                    <tr th:each="ingredient : ${recipe.ingredients}" >
+                        <td th:text="${(ingredient.getAmount() +
+                                        ' ' + ingredient.unitOfMeasure.getUom() +
+                                        ' - ' + ingredient.getDescription())}"></td>
                     </tr>
                 </table>
         </div>
